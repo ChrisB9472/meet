@@ -35,7 +35,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    "https://mlzydonigl.execute-api.eu-central-1.amazonaws.com/dev/api/token" +
+    "https://bu44sby136.execute-api.us-east-1.amazonaws.com/dev/api/token" +
       "/" +
       encodeCode
   )
@@ -60,7 +60,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      "https://mlzydonigl.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
+      "https://bu44sby136.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
     const result = await axios.get(url);
