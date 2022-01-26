@@ -21,9 +21,8 @@ class CitySearch extends Component {
           });
         } else {
           return this.setState({
-            query: suggestion,
-            suggestions: [],
-            showSuggestions:false,
+            query: value,
+            suggestions,
             infoText:''
           });
         }
