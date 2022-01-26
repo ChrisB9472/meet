@@ -40,6 +40,7 @@ class App extends Component {
           locations: extractLocations(events),
         });
       }
+      
     });
   }
 
