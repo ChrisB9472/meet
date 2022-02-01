@@ -42,4 +42,4 @@ onClick={this.handleClickOnShowDetails}
 }
 }
 
-export default Event;
+export default Event; 
