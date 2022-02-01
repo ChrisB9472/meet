@@ -1,43 +1,45 @@
-import React, { Component } from 'react';
+// src/Event.js
 
-export class Event extends Component {
+import React, { Component } from "react";
 
-    state = {
-        collapsed: true
-    };
+class Event extends Component {
+state = {
+collapsed: false,
+};
 
-    handleClick= ()  => {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
-    };
+handleClickOnShowDetails = () => {
+if (this.state.collapsed === true) {
+this.setState({ collapsed: false });
+} else {
+this.setState({ collapsed: true });
+}
+};
 
-    render(){
-        const { event} = this.props;
-        const { collapsed } = this.state;
-       
-        
-    return <div className='event'>
-        
-        <h1 className='summary'>{event.summary}</h1>
-        <p className='dateTime'>{event.dateTime}</p>
-        <p className='timeZone'>{event.timeZone}</p>
-        <p className='location'>@{event.summary} | {event.location}</p>
-        {
-            <button className='show-details'
-        onClick={this.handleClick}>show Details</button>
-        }
-        {
-            <div className="details-view">
-                <h2 className="details-header">About event:</h2>
-            <a href={event.htmlLink} className='htmlLink' target='_blank'>See details on Google Calendar</a>
-            <p className='description'>{event.description}</p>
-            <button className='hide-details'
-        onClick={this.handleClick}>hide Details</button></div>
-        }
-    </div>;  
-    }
-    
+render() {
+const { event } = this.props;
+return (
+<div className="event">
+<h2 className="summary">{event.summary}</h2>
+<p className="start-date">
+{event.start.dateTime} ({event.start.timeZone})
+</p>
+
+{this.state.collapsed && (
+<div className='eventDetails hide' >
+<h2>About event:</h2>
+<p>{event.description}</p>
+</div>
+)}
+
+<button
+className="show-details-btn"
+onClick={this.handleClickOnShowDetails}
+>
+{!this.state.collapsed ? 'Show Details' : 'Hide Details'}
+</button>
+</div>
+);
+}
 }
 
 export default Event;
